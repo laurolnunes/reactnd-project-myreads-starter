@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import './App.css'
+import Book from './Book'
 
 class ShelfSession extends Component {
     static propTypes = {
@@ -14,24 +16,16 @@ class ShelfSession extends Component {
             <div className="bookshelf">
             <h2 className="bookshelf-title">{name}</h2>
             <div className="bookshelf-books">
-              <ol className="books-grid">
+            <ol className="books-grid">
+              {books.map(book => {
+                  return (
+                    <li key={book.id}>
+                        <Book title={book.title} authors={book.authors} image={book.image} />
+                    </li>
+                  )
+              })}
                 <li>
-                  <div className="book">
-                    <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: 'url("http://books.google.com/books/content?id=1q_xAwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE712CA0cBYP8VKbEcIVEuFJRdX1k30rjLM29Y-dw_qU1urEZ2cQ42La3Jkw6KmzMmXIoLTr50SWTpw6VOGq1leINsnTdLc_S5a5sn9Hao2t5YT7Ax1RqtQDiPNHIyXP46Rrw3aL8&source=gbs_api")' }}></div>
-                      <div className="book-shelf-changer">
-                        <select>
-                          <option value="move" disabled>Move to...</option>
-                          <option value="currentlyReading">Currently Reading</option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none">None</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="book-title">Oh, the Places You'll Go!</div>
-                    <div className="book-authors">Seuss</div>
-                  </div>
+                  
                 </li>
                 <li>
                   <div className="book">
