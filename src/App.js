@@ -52,7 +52,6 @@ class BooksApp extends React.Component {
         book.shelf = shelf;
         const updateBooks = this.state.books.filter((b) => b.id !== book.id)
         updateBooks.push(book)
-
         this.setState({
           books: updateBooks
         })
