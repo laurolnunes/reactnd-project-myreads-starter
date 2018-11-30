@@ -6,12 +6,18 @@ import Book from './Book'
 
 class ShelfSession extends Component {
     static propTypes = {
-        books: PropTypes.array.isRequired,
+        books: PropTypes.array,
         name: PropTypes.string.isRequired,
     }
+
+    onChangeShelf = (book, shelf) => {
+        this.props.onChangeShelf(book, shelf)
+    }
+
     render()
     {
-        const { name, books } = this.props;
+        const { name } = this.props;
+        const books = this.props.books || [];
         return (
             <div className="bookshelf">
             <h2 className="bookshelf-title">{name}</h2>
@@ -20,31 +26,10 @@ class ShelfSession extends Component {
               {books.map(book => {
                   return (
                     <li key={book.id}>
-                        <Book title={book.title} authors={book.authors} image={book.image} />
+                        <Book book={book} onChangeShelf={this.onChangeShelf}/>
                     </li>
                   )
               })}
-                <li>
-                  
-                </li>
-                <li>
-                  <div className="book">
-                    <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: 'url("http://books.google.com/books/content?id=32haAAAAMAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72yckZ5f5bDFVIf7BGPbjA0KYYtlQ__nWB-hI_YZmZ-fScYwFy4O_fWOcPwf-pgv3pPQNJP_sT5J_xOUciD8WaKmevh1rUR-1jk7g1aCD_KeJaOpjVu0cm_11BBIUXdxbFkVMdi&source=gbs_api")' }}></div>
-                      <div className="book-shelf-changer">
-                        <select>
-                          <option value="move" disabled>Move to...</option>
-                          <option value="currentlyReading">Currently Reading</option>
-                          <option value="wantToRead">Want to Read</option>
-                          <option value="read">Read</option>
-                          <option value="none">None</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="book-title">The Adventures of Tom Sawyer</div>
-                    <div className="book-authors">Mark Twain</div>
-                  </div>
-                </li>
               </ol>
             </div>
           </div>
