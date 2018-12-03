@@ -17,7 +17,7 @@ class ShelfSession extends Component {
     render()
     {
         const { name } = this.props;
-        const books = this.props.books || [];
+        let books = this.props.books || [] 
         return (
             <div className="bookshelf">
             <h2 className="bookshelf-title">{name}</h2>

@@ -46,7 +46,6 @@ class BooksApp extends React.Component {
   }
 
   onChangeShelf = (book, shelf) => {
-    console.log(this.state.books)
     BooksAPI.update(book, shelf)
       .then(() => {
         book.shelf = shelf;
@@ -75,6 +74,7 @@ class BooksApp extends React.Component {
                 currentlyReading={this.state.books.filter(book => book.shelf === "currentlyReading")} 
                 wantToRead={this.state.books.filter(book => book.shelf === "wantToRead")}
                 read={this.state.books.filter(book => book.shelf === "read")}
+                onChangeShelf={this.onChangeShelf}
                 />
              </div>
             <div className="open-search">
