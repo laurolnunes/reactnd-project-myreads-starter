@@ -26,7 +26,7 @@ class BooksApp extends React.Component {
         {
           const booksFoundFiltered = result.map((bookFound) => {
             bookFound.shelf = 'none';
-            this.state.books.forEach((book) => {
+            this.state.books.find(function(book){
               if (bookFound.id === book.id) {
                 bookFound.shelf = book.shelf;
               }

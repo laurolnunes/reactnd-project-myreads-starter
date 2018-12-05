@@ -13,7 +13,7 @@ class Book extends Component {
         if (typeof book.imageLinks === 'undefined') bookCover = '';
         else bookCover = book.imageLinks.thumbnail;
         
-        if (typeof book.authors === 'undefined') authors = 'No authors';
+        if (typeof book.authors === 'undefined') authors = ['No authors'];
         else authors = book.authors       
 
         return (
@@ -31,7 +31,7 @@ class Book extends Component {
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{authors}</div>
+                <div className="book-authors">{authors.join(', ')}</div>
             </div>
         )
     }
